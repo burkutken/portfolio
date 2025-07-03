@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details: Modular Wind Turbine System</title>
+    <title>Project Details: Magazine System Design</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -54,14 +54,14 @@
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 800;
+            color: black;
             text-decoration: none;
         }
         
         .logo span {
-            color: var(--secondary);
+            color: black;
         }
         
         .nav-links {
@@ -216,16 +216,17 @@
         }
         
         .gallery-item {
-            border-radius: 10px;
+            border-radius: 5px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 250px;
+            /*height: 300;*/
             position: relative;
         }
         
         .gallery-item img {
             width: 100%;
             height: 100%;
+            cursor: zoom-in;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
@@ -429,7 +430,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo">Engi<span>Port</span></a>
+                <a href="index.html" class="logo">Burak <span>Taş</span></a>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#about">About</a></li>
@@ -447,69 +448,98 @@
     <section class="project-detail">
         <div class="container">
             <div class="project-header">
-                <h1>Modular Wind Turbine System</h1>
-                <p>An innovative approach to urban wind energy generation</p>
+                <h1>Magazine System Design</h1>
+                <p>Design of an Automatic Loading System for 120 mm Tank Ammunition</p>
+                <br>
                 <div class="project-meta">
-                    <div class="meta-item">Renewable Energy</div>
-                    <div class="meta-item">Aerodynamics</div>
+                    <div class="meta-item">Control System Design</div>
+                    <div class="meta-item">Static Analysis</div>
+                    <div class="meta-item">Shock Analysis</div>
                     <div class="meta-item">CAD Design</div>
-                    <div class="meta-item">Completed: June 2022</div>
+                    <div class="meta-item">Completed: June 2025</div>
                 </div>
             </div>
             
             <div class="project-content-wrapper">
                 <div class="project-details">
                     <h2>Project Overview</h2>
-                    <p>The Modular Wind Turbine System (MWTS) is a scalable solution designed to harness wind energy in urban environments where traditional turbines are impractical. This project addresses the growing demand for sustainable energy sources in densely populated areas.</p>
+                    <p>This is a graduation design project focuses on the development of an Automatic Loading System for 120 mm Tank Ammunition. 
+                        The system is designed to operate under military conditions, with the capability to function on 30° incline platform,
+                        load ammunition within 6 seconds, and maintain a total system mass under 500kg. The system integrates a 22-round magazine,
+                        actuator-driven gripper units, and a modular platform to carry the magazine system. The goal was increase to operational efficiency, 
+                        reduce human error, and ensure safety and reliability in defense scenarios, all within a strict budget of $30,000.
+                    </p>
                     
                     <h2>Challenge</h2>
-                    <p>Urban environments present unique challenges for wind energy generation: inconsistent wind patterns, space constraints, noise concerns, and safety regulations. Traditional large-scale turbines are unsuitable for city rooftops and small commercial spaces.</p>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=500&q=80" alt="Wind Turbine Installation">
-                        <div class="gallery-caption">Urban installation of modular wind turbines</div>
-                    </div>
-                    
-                    <h2>Solution</h2>
-                    <p>The MWTS features:</p>
+                    <p>In this project i was responsible with:</p>
                     <ul>
-                        <li>Vertical-axis design for omnidirectional wind capture</li>
-                        <li>Modular components that can be combined for different power outputs</li>
-                        <li>Noise-reduction technology for urban compliance</li>
-                        <li>Smart monitoring system for performance optimization</li>
-                        <li>Lightweight composite materials for rooftop installation</li>
+                        <li>Gripper Static and Shock Analysis using ANSYS</li>
+                        <li>Magazine System Design</li>
+                        <li>Magazine System Components Static and Shock Analysis using ANSYS</li>
+                        <li>Magazine Control System Design</li>
+                    </ul>
+                    <p>Here, challenges were:</p>
+                    <ul>
+                        <li>Meeting military standars (MIL-STD-810H) for shock analysis</li>
+                        <li>Designing a compact system capable of operating on slope and in tight spaces which 22 ammunitions can fit</li>
+                        <li>minimizing mechanical complexitiy and material selection</li>
+                        <li>Moving target (selected) gripper within 6 seconds to releasing position</li>
+                    </ul>
+
+                    <h2>Solution</h2>
+                    <p>In the Magazine System Design:</p>
+                    <ul>
+                        <li>Chain-driven system with track rollers moving V-groove rails used. </li>
+                        <li>Aluminum 6061 is selected as a result of several pugh matrices considering weight-cost-strength.</li>
+                        <li>ANSYS strength analysis conducted respect to MIL-STD-810H standard for shock especiall.y</li>
+                        <li>BLDC Motor is calculated and selected for translation and simulated using MATLAB and Sİmulink.</li>
                     </ul>
                     
                     <h2>Engineering Process</h2>
-                    <p>Our development process included extensive computational fluid dynamics (CFD) simulations to optimize blade design for low wind speed environments. We prototyped 12 different blade configurations using 3D printing technology before finalizing the aerodynamic profile.</p>
-                    <p>Structural analysis was performed using finite element analysis (FEA) to ensure the turbine could withstand urban wind conditions while maintaining minimal vibration. The final design achieves a 40% increase in energy efficiency compared to existing urban wind solutions.</p>
-                    
-                    <div class="project-gallery">
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1501685532562-aa6846b14a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Wind Turbine CFD Analysis">
-                            <div class="gallery-caption">CFD simulation of airflow around turbine blades</div>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1551195725-fa4ef1f1a8a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Wind Turbine Prototype">
-                            <div class="gallery-caption">Prototype testing in wind tunnel</div>
-                        </div>
+                    <p>In the Static and Shock Analysis, most factor of safety challenging one was 
+                        the gripper shock analysis on the y axis as shown below, resulted with 4.9 FoS</p>
+                    <div class="gallery-item">
+                        <img src="images/gripper_shock.png" alt="Gripper Shock Analysis">
+                        <div class="gallery-caption">Gripper Shock Analysis</div>
+                    </div>
+                    <br>
+                    <p>In the Magazine System design, constraint was to fit 22 ammunitions into 
+                        magazine system which must be as small as possible</p>
+                    <div class="gallery-item">
+                        <img src="images/magazine_system.png" alt="Magazine System Design">
+                        <div class="gallery-caption">Magazine System Design</div>
+                    </div>
+                    <br>
+                    <p>Components like track rollers and gripper support carries gripper system and the Ammunition
+                        which is 28kg and after simulating static and shock analysis, most FoS challenging one was 
+                        gripper carrier u support as shown, resulted with 5 FoS
+                    </p>
+                    <div class="gallery-item">
+                        <img src="images/trackroller_shock.png" alt="Track Roller Shock Analysis">
+                        <div class="gallery-caption">Track Roller Shock Analysis</div>
+                    </div>
+                    <br>
+                    <p>In the magazine control system design, motor shaft position is controlled using built in encoder and system
+                        design as a close loop system. Here, additionally notes from the class MECH4480 being used since motor rotates
+                        causes translation so there is rotation-to-translation conversion. PD Controller is used to control the motor
+                        shaft position and to select the proper PD gains, damping ratio iterated and 0.8 damping ratio is selected 
+                        since it has less overshoot and faster transient.</p>
+                    <div class="gallery-item">
+                        <img src="images/controller_iteration.png" alt="System Response Under Different Damping Ratios">
+                        <div class="gallery-caption">Track Roller Shock Analysis</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/controller_iteration_dp08.png" alt="System Response Under 0.8 Damping Ratio ">
+                        <div class="gallery-caption">Track Roller Shock Analysis</div>
                     </div>
                     
                     <h2>Results</h2>
                     <p>The MWTS has been successfully implemented in three pilot locations:</p>
                     <ul>
-                        <li>Commercial building rooftop in San Francisco: 5 kW capacity</li>
-                        <li>University campus in Boston: 12 kW array</li>
-                        <li>Municipal building in Seattle: 8 kW installation</li>
-                    </ul>
-                    <p>Average energy production exceeded projections by 15% across all installations, with noise levels 20% below regulatory limits.</p>
-                    
-                    <h2>Key Achievements</h2>
-                    <ul>
-                        <li>40% increase in energy efficiency compared to competitors</li>
-                        <li>25% reduction in manufacturing costs through modular design</li>
-                        <li>Reduced installation time by 60% with plug-and-play components</li>
-                        <li>Recipient of the 2022 Sustainable Energy Innovation Award</li>
+                        <li>System met all functional requirements with a load time 6 seconds</li>
+                        <li>Factor of Safety (FoS) > 4.9 in worst-case shock; all components passed fatigue and vibration analysis.</li>
+                        <li>Full compliance with MIL-STD-810H for environmental and operational conditions.</li>
+                        <li>System is modular and compact, suitable for retrofitting into different armored vehicles.</li>
                     </ul>
                     
                     <a href="index.html#projects" class="back-to-portfolio">
@@ -517,53 +547,7 @@
                     </a>
                 </div>
                 
-                <div class="project-sidebar">
-                    <div class="tech-stack">
-                        <h3>Technical Specifications</h3>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-wind"></i></div>
-                            <div>
-                                <h4>Power Output</h4>
-                                <p>1-20 kW per module</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            <div>
-                                <h4>Cut-in Wind Speed</h4>
-                                <p>2.5 m/s (5.6 mph)</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-volume-up"></i></div>
-                            <div>
-                                <h4>Noise Level</h4>
-                                <p>35 dB at 10 m distance</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-weight"></i></div>
-                            <div>
-                                <h4>Weight</h4>
-                                <p>85 kg per module</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-expand"></i></div>
-                            <div>
-                                <h4>Dimensions</h4>
-                                <p>2.5m height × 1.8m diameter</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-bolt"></i></div>
-                            <div>
-                                <h4>Voltage Output</h4>
-                                <p>48V DC or 240V AC</p>
-                            </div>
-                        </div>
-                    </div>
-                    
+                <div class="project-sidebar"> 
                     <div class="tech-stack">
                         <h3>Technologies Used</h3>
                         <div class="tech-item">
@@ -571,24 +555,20 @@
                             <div>SolidWorks CAD</div>
                         </div>
                         <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-wind"></i></div>
-                            <div>ANSYS CFD</div>
+                            <div class="tech-icon"><i class="fas fa-cube"></i></div>
+                            <div>Fusion 360</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-wrench"></i></div>
+                            <div>ANSYS Structural/Transient</div>
                         </div>
                         <div class="tech-item">
                             <div class="tech-icon"><i class="fas fa-cogs"></i></div>
                             <div>Finite Element Analysis</div>
                         </div>
                         <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-print"></i></div>
-                            <div>3D Printing Prototyping</div>
-                        </div>
-                        <div class="tech-item">
                             <div class="tech-icon"><i class="fas fa-microchip"></i></div>
-                            <div>IoT Monitoring System</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-leaf"></i></div>
-                            <div>Carbon Fiber Composites</div>
+                            <div>Matlab/Simulink</div>
                         </div>
                     </div>
                     
@@ -597,29 +577,36 @@
                         <div class="tech-item">
                             <div class="tech-icon"><i class="fas fa-calendar"></i></div>
                             <div>
-                                <h4>Research & Design</h4>
-                                <p>Jan 2021 - Jun 2021</p>
+                                <h4>Research</h4>
+                                <p>Feb 2025 - March 2025</p>
                             </div>
                         </div>
                         <div class="tech-item">
                             <div class="tech-icon"><i class="fas fa-cogs"></i></div>
                             <div>
-                                <h4>Prototyping</h4>
-                                <p>Jul 2021 - Dec 2021</p>
+                                <h4>Design</h4>
+                                <p>March 2025 - June 2025</p>
                             </div>
                         </div>
                         <div class="tech-item">
                             <div class="tech-icon"><i class="fas fa-flask"></i></div>
                             <div>
-                                <h4>Testing & Validation</h4>
-                                <p>Jan 2022 - Apr 2022</p>
+                                <h4>Simulating</h4>
+                                <p>March 2025 - June 2025</p>
                             </div>
                         </div>
                         <div class="tech-item">
                             <div class="tech-icon"><i class="fas fa-rocket"></i></div>
                             <div>
-                                <h4>Deployment</h4>
-                                <p>May 2022 - Jun 2022</p>
+                                <h4>Finalizing</h4>
+                                <p>May 2025 - June 2025</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-person-chalkboard"></i></div>
+                            <div>
+                                <h4>Presentation</h4>
+                                <p>23 June 2025</p>
                             </div>
                         </div>
                     </div>
@@ -629,16 +616,39 @@
             <h2 class="project-header">Project Gallery</h2>
             <div class="project-gallery">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Wind Turbine Design">
-                    <div class="gallery-caption">Final product installation on rooftop</div>
+                    <img src="images/magazine.png" alt="Magazine System Design">
+                    <div class="gallery-caption">Magazine System Design</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/roller_stress.png" alt="Equivalent Stress on Rollers">
+                    <div class="gallery-caption">Stress on Rollers</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/trackroller_vgroove_rail.png" alt="Track Roller sit on V Groove Rails">
+                    <div class="gallery-caption">Track Roller sit on V Groove Rails</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/gripper_system.png" alt="Gripper System">
+                <div class="gallery-caption">Gripper System</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/chain_attachment.png" alt="Chain Attachment">
+                <div class="gallery-caption">Chain Attachment</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1624398755210-8f7c3a3d3d6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Wind Turbine Components">
-                    <div class="gallery-caption">Modular components before assembly</div>
+                    <img src="images/sprockets.png" alt="Sprockets">
+                <div class="gallery-caption">Sprockets</div>
                 </div>
+
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1624398755210-8f7c3a3d3d6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Wind Turbine Monitoring">
-                    <div class="gallery-caption">Performance monitoring dashboard</div>
+                    <img src="images/simulink_blockdiagram.png" alt="Simulink Block Diagram">
+                <div class="gallery-caption">Simulink Block Diagram</div>
+                </div>
+
                 </div>
             </div>
         </div>
@@ -649,39 +659,16 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <h3>EngiPort</h3>
-                    <p>A professional engineering portfolio showcasing innovative solutions and technical expertise in mechanical engineering and sustainable design.</p>
+                    <h3>Links</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/buraktronics/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/burkutken"><i class="fab fa-github"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">About Me</a></li>
-                        <li><a href="index.html#projects">Projects</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Expertise</h3>
-                    <ul>
-                        <li><a href="#">Product Design</a></li>
-                        <li><a href="#">Thermal Systems</a></li>
-                        <li><a href="#">Renewable Energy</a></li>
-                        <li><a href="#">Robotics</a></li>
-                    </ul>
-                </div>
             </div>
-            
             <div class="copyright">
-                <p>&copy; 2023 EngiPort. All rights reserved.</p>
+                <p>&copy; 2025 Burak Taş. All rights reserved.</p>
             </div>
         </div>
     </footer>
