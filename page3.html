@@ -1,0 +1,684 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details: MQL Experiment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: black;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: black;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Project Detail Styles */
+        .project-detail {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .project-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .project-header h1 {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .meta-item {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-weight: 500;
+        }
+        
+        .project-content-wrapper {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .project-details {
+            flex: 1;
+        }
+        
+        .project-details h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .project-details p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .project-details ul {
+            margin-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .project-details li {
+            margin-bottom: 10px;
+        }
+        
+        .project-sidebar {
+            flex: 0 0 300px;
+        }
+        
+        .tech-stack {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .tech-stack h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .tech-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .tech-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .gallery-item {
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            /*height: 300;*/
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            cursor: zoom-in;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        
+        .back-to-portfolio {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+        
+        .back-to-portfolio:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        div.center {
+
+            text-align: center;
+
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-about {
+            flex: 2;
+            padding-right: 50px;
+        }
+        
+        .footer-links {
+            flex: 1;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .project-content-wrapper {
+                flex-direction: column;
+            }
+            
+            .project-sidebar {
+                flex: 1;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            .project-header h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .project-detail {
+                padding: 100px 0 60px;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .footer-about {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Burak <span>Taş</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Project Detail -->
+    <section class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <h1>Minimum Quantity Lubrication (MQL) Project</h1>
+                <p>Design of MQL Experiment Setup and CFD Analysis</p>
+                <br>
+                <div class="project-meta">
+                    <div class="meta-item">Experiment</div>
+                    <div class="meta-item">CFD</div>
+                    <div class="meta-item">CAD Design</div>
+                    <div class="meta-item">Completed: Jan 2025</div>
+                </div>
+            </div>
+            
+            <div class="project-content-wrapper">
+                <div class="project-details">
+                    <h2>Project Overview</h2>
+                    <p>Minimum Quantity Lubrication (MQL) is used for lowering lubrication use in turning, milling and CNC operations. It is designed to spray the lubrication 
+                        which enough to be cooler the operation. This project is offered by our Instractor so that they allow us to study and work on this project under the 
+                        Laboratory in the Mechanical Faculty.
+                    </p>
+                    
+                    <h2>Challenge</h2>
+                    <p>The primary challenge was designing a low-cost, agile quadruped robot for search-and-rescue operations in indoor environments (e.g., collapsed buildings). 
+                        Existing solutions prioritized expensive components or lacked modularity, limiting scalability. Key hurdles included:</p>
+                    <ul>
+                        <li>Designing the test environment</li>
+                        <li>Designing the nozzles to test different outputs</li>
+                        <li>Measuring the heat changes</li>
+                    </ul>
+
+                    <h2>Solution</h2>
+                    <ul>
+                        <li>Nozzle setup and sheet metal is placed with variable distance</li>
+                        <li>Supports are designed and 3D printed using PLA and fixed on the desk with sheet plate</li>
+                        <li>For testing, new nozzles are designed and 3D printed using SLA material</li>
+                        <li>ANSYS Fluent CFD is simulated for Nozzles to compare with real-life results</li>
+                    </ul>
+                    
+                    <h2>Engineering Process</h2>
+                    <p>Firstly, system was clear and nozzle system was ready with compressor and MQL insturment. So, I was asked to design the 
+                        experiment setup and fixed everything on the desk and use 20mm t-slot frames to cover the setup.
+                    </p>
+                    <div class="gallery-item">
+                        <img src="images/mql/fusion360_setup.png" alt="MQL Experiment Setup">
+                        <div class="gallery-caption">MQL Experiment Setup</div>
+                    </div>
+                    <br>
+                    <div class="gallery-item">
+                        <img src="images/mql/IMG-20250220-WA0008.png" alt="MQL Experiment Setup">
+                        <div class="gallery-caption">MQL Experiment Setup</div>
+                    </div>
+                    <br>
+                    <p>Since the experiment setup was done, now I asked to design nozzles to experiment different spraying and result with different cooling time 
+                        and spraying area
+                    </p>
+                    <div class="gallery-item">
+                        <img src="images/mql/burak_nozzle.png" alt="Nozzle Design Experiment">
+                        <div class="gallery-caption">Nozzle Design Experiment</div>
+                    </div>
+                    <br>
+                    <div class="gallery-item">
+                        <img src="images/mql/IMG-20250704-WA0013.png" alt="Nozzle Design Experiment">
+                        <div class="gallery-caption">Nozzle Design Experiment</div>
+                    </div>
+                    <br>
+                    <div class= "center">
+                        <video width="320" controls >
+                            <source src="images/mql/mql_video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <br>
+                    <p>After all these real-time experimentings, CFD analysis held as well. Here, I designed two little different nozzles
+                        especially they are different on their tip side, and see how they react under CFD Simulation using ANSYS. This CFD held 
+                        as 2D since i take crossection of the nozzles.
+                    </p>
+                    <div class="gallery-item">
+                        <img src="images/mql/cfd_nozzle1.png" alt="Nozzle 1">
+                        <div class="gallery-caption">Nozzle 1</div>
+                    </div>
+                    <br>
+                    <div class="gallery-item">
+                        <img src="images/mql/cfd_nozzle2.png" alt="Nozzle 2">
+                        <div class="gallery-caption">Nozzle 2</div>
+                    </div>
+                    <br>
+                    <div class="gallery-item">
+                        <img src="images/mql/cfd_nozzle1_result.png" alt="Nozzle 1 CFD Result">
+                        <div class="gallery-caption">Nozzle 1 CFD Result</div>
+                    </div>
+                    <br>
+                    <div class="gallery-item">
+                        <img src="images/mql/cfd_nozzle2_result.png" alt="Nozzle 2 CFD Result">
+                        <div class="gallery-caption">Nozzle 2 CFD Result</div>
+                    </div>
+                    <br>
+                    <h2>Results</h2>
+                    <ul>
+                        <li>Heat change is measured using Thermocuples and Nozzles are Tested</li>
+                        <li>CFD analysis held for the Nozzles and results are compared with real life experiments</li>
+                        <li>Experiment setup designed</li>
+                    </ul>
+                    
+                    <a href="index.html#projects" class="back-to-portfolio">
+                        <i class="fas fa-arrow-left"></i> Back to Portfolio
+                    </a>
+                </div>
+                
+                <div class="project-sidebar"> 
+                    <div class="tech-stack">
+                        <h3>Technologies Used</h3>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-cube"></i></div>
+                            <div>SolidWorks</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-cube"></i></div>
+                            <div>Fusion 360</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-wrench"></i></div>
+                            <div>ANSYS CFD</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-cogs"></i></div>
+                            <div>Finite Element Analysis</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-microchip"></i></div>
+                            <div>Lab Work</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <h3>Project Timeline</h3>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-calendar"></i></div>
+                            <div>
+                                <h4>Research & Design</h4>
+                                <p>Oct 2024 - Jan 2025</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-flask"></i></div>
+                            <div>
+                                <h4>Simulating</h4>
+                                <p>Nov 2025 - Dec 2025</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon"><i class="fas fa-rocket"></i></div>
+                            <div>
+                                <h4>Finalizing</h4>
+                                <p>Feb 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="project-header">Project Gallery</h2>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="images/mql/IMG-20250220-WA0004.png" alt="Body Exploded View">
+                    <div class="gallery-caption">Body Exploded View</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/mql/IMG-20250220-WA0005.png" alt="Quadruped Robot Exploded View">
+                    <div class="gallery-caption">Quadruped Robot Exploded View</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/mql//IMG-20250220-WA0009.png" alt="Leg Exploded View">
+                    <div class="gallery-caption">Leg Exploded View</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/mql/IMG-20250704-WA0009.png" alt="Gripper System">
+                <div class="gallery-caption">Gripper System</div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Links</h3>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/buraktronics/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/burkutken"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Burak Taş. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
