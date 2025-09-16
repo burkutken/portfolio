@@ -534,6 +534,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://burkutken.github.io/portfolio/CV_burak_tas_eng.pdf" class="cv-download-btn" download>CV</a>
                 </ul>
                 <div class="menu-btn">
                     <i class="fas fa-bars"></i>
@@ -870,6 +871,18 @@
             
             contactForm.querySelector('button[type="submit"]').disabled = !isValid;
         });
+        document.addEventListener('DOMContentLoaded', function() {
+            const cvButton = document.querySelector('.cv-download-btn');
+            
+            if (cvButton) {
+                cvButton.addEventListener('click', function() {
+                    // Add tracking or analytics here
+                    console.log('CV download clicked');
+                    // You can add Google Analytics or other tracking code
+                });
+            }
+        });
     </script>
 </body>
 </html>
+
