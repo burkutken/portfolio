@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$title</title>
+  <meta name="description" content="$description">
+  <meta name="theme-color" content="#161a1d">
+  <link rel="canonical" href="$canonical">
+  <meta property="og:type" content="$og_type">
+  <meta property="og:title" content="$title">
+  <meta property="og:description" content="$description">
+  <meta property="og:url" content="$canonical">
+  <meta property="og:image" content="$og_image">
+  <link rel="icon" type="image/svg+xml" href="${root}assets/favicon.svg">
+  <link rel="stylesheet" href="${root}assets/site.css">
+  $landing_assets
+  $math_assets
+  <script src="${root}assets/site.js" defer></script>
+</head>
+<body class="$body_class">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="shell navigation" aria-label="Main navigation">
+      <a class="wordmark" href="${root}index.html" aria-label="Portfolio home"><span class="mark" aria-hidden="true"></span>Work / Index</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation-links">Menu <span aria-hidden="true">+</span></button>
+      <div class="nav-links" id="navigation-links">
+        <a href="${root}work.html" $work_current>Work</a>
+        <a href="${root}about.html" $about_current>About</a>
+        <a href="${root}contact.html" $contact_current>Contact</a>
+        <a class="nav-cv" href="$cv">CV <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main">$content</main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="footer-profile" href="${root}about.html"><strong>$name</strong><span>$profession</span></a>
+      <div class="footer-links"><a href="$linkedin">LinkedIn ↗</a><a href="$github">GitHub ↗</a><a href="mailto:$email">Email ↗</a></div>
+      <p class="copyright">© $year · Selected engineering work</p>
+    </div>
+  </footer>
+  <dialog class="lightbox" aria-label="Project image viewer"><form method="dialog"><button class="lightbox-close" aria-label="Close image viewer">Close <span aria-hidden="true">×</span></button></form><img alt=""><p></p></dialog>
+</body>
+</html>

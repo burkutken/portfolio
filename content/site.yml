@@ -1,0 +1,28 @@
+name: Burak Taş
+profession: Mechatronics Engineer
+url: https://burkutken.github.io/portfolio
+email: tasburak4@gmail.com
+location: Istanbul, Türkiye
+linkedin: https://www.linkedin.com/in/buraktronics/
+github: https://github.com/burkutken
+cv: pdf/CV_burak_tas_eng.pdf
+intro: Mechanical design, simulation and physical prototyping.
+bio: Working across mechanical design, analysis and prototyping to turn ideas into tangible systems.
+landing:
+  approach_title: Engineering the whole picture.
+  approach_intro: I work where mechanics, electronics and control meet. From an initial concept to a physical prototype, I use design and analysis to understand how a system behaves.
+  capabilities:
+    - title: Mechanical design
+      description: Translating requirements into mechanisms, assemblies and practical design decisions.
+      tools: SolidWorks / Fusion 360
+      filter: Mechanical
+    - title: Analysis & validation
+      description: Exploring behaviour through simulation, calculations and experimental testing.
+      tools: ANSYS / MATLAB / Testing
+      search: ANSYS
+    - title: Mechatronics
+      description: Bringing mechanics, electronics and control together in working prototypes.
+      tools: Arduino / Control / Prototyping
+      filter: Mechatronics
+  profile_intro: Curious about how things work. Driven to make them work better.
+  profile_text: My engineering journey started with Arduino and CAD experiments. It grew into a practice that connects mechanical design, analysis and hands-on prototyping. These projects are a selection of what I have explored and learned along the way.

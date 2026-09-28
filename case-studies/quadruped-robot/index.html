@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Portfolio Markdown">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quadruped Robot Design — Burak Taş</title>
+  <meta name="description" content="A quadruped robot concept combining mechanical design, sensors and control.">
+  <meta name="theme-color" content="#161a1d">
+  <link rel="canonical" href="https://burkutken.github.io/portfolio/case-studies/quadruped-robot/index.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Quadruped Robot Design — Burak Taş">
+  <meta property="og:description" content="A quadruped robot concept combining mechanical design, sensors and control.">
+  <meta property="og:url" content="https://burkutken.github.io/portfolio/case-studies/quadruped-robot/index.html">
+  <meta property="og:image" content="https://burkutken.github.io/portfolio/images/magazine.png">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../assets/site.css">
+  
+  
+  <script src="../../assets/site.js" defer></script>
+</head>
+<body class="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="shell navigation" aria-label="Main navigation">
+      <a class="wordmark" href="../../index.html" aria-label="Portfolio home"><span class="mark" aria-hidden="true"></span>Work / Index</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation-links">Menu <span aria-hidden="true">+</span></button>
+      <div class="nav-links" id="navigation-links">
+        <a href="../../work.html" >Work</a>
+        <a href="../../about.html" >About</a>
+        <a href="../../contact.html" >Contact</a>
+        <a class="nav-cv" href="../../pdf/CV_burak_tas_eng.pdf">CV <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main"><article class="case-study"><header class="shell case-header"><div class="case-breadcrumb"><a href="../../work.html">← Work index</a><span>Robotics / Case study 04</span></div><div class="case-hero"><div><p class="eyebrow">CAD / Control / Prototyping</p><h1>Quadruped Robot</h1><p class="case-summary">Design of Quadruped Robot for serviced to search in abandoned building</p><dl class="case-facts"><div><dt>My contribution</dt><dd>Mechanical design and control</dd></div><div><dt>Status / Period</dt><dd>Completed · May 2025</dd></div></dl><p class="read-time">3 min read · Robotics</p></div><div class="case-cover"><div class="cover-image"><img src="../../images/quadruped%20robot/robodog_assem_2.png" alt="Quadruped Robot" loading="eager" decoding="async" fetchpriority=high></div></div></div></header>
+      <div class="shell article-layout"><aside class="article-aside"><nav class="desktop-toc" aria-label="In this study"><p class="eyebrow">In this study</p><ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#challenge">Challenge</a></li><li><a href="#solution">Solution</a></li><li><a href="#engineering-process">Engineering Process</a></li><li><a href="#results">Results</a></li><li><a href="#project-timeline">Project timeline</a></li><li><a href="#project-gallery">Project gallery</a></li></ol></nav><details class="mobile-toc"><summary>In this study <span aria-hidden="true">+</span></summary><nav aria-label="Study sections"><ol><li><a href="#project-overview">Project Overview</a></li><li><a href="#challenge">Challenge</a></li><li><a href="#solution">Solution</a></li><li><a href="#engineering-process">Engineering Process</a></li><li><a href="#results">Results</a></li><li><a href="#project-timeline">Project timeline</a></li><li><a href="#project-gallery">Project gallery</a></li></ol></nav></details></aside>
+      <div class="article-main"><div class="prose"><h2 id="project-overview">Project Overview</h2>
+<p>This project focuses on the design and analysis of quadruped robot which capable of autonomous movement for tracking inhuman environments such as abandoned buildings. The robot is engineered using carbon fiber composite materials with the effective manufacturing via vacuum bagging for strength and lightweight performance. It includes MG996R servo motors, advanced sensors such as (IMU, ultrasonic, force etc.) and a microSD-based data logging system. PID control ensures balance, torque management and terrain adaptability. Stress, deformation analysis were conducted using Solidworks and kinematic analysis were conducted using Matlab to verify mechanical and theoretical integrity. The robot adheres to ISO standards and meets budget and operational constraints.</p>
+<h2 id="challenge">Challenge</h2>
+<p>The primary challenge was designing a low-cost, agile quadruped robot for search-and-rescue operations in indoor environments (e.g., collapsed buildings). Existing solutions prioritized expensive components or lacked modularity, limiting scalability. Key hurdles included:</p>
+<ul>
+<li>
+<p>Balancing high torque for stability with low power consumption</p>
+</li>
+<li>
+<p>Achieving accurate terrain detection/mapping with low-cost sensors</p>
+</li>
+<li>
+<p>Enabling autonomous navigation within strict size (400×400×400 mm) and budget constraints ($1,000)</p>
+</li>
+<li>
+<p>Operating in temperatures from -10°C to 40°C with 1-hour battery life</p>
+</li>
+</ul>
+<h2 id="solution">Solution</h2>
+<p>Quadruped robot with optimized mechatronic systems:</p>
+<ul>
+<li>
+<p>Carbon fiber composites (manufactured via vacuum bagging) for high strength-to-weight ratio.</p>
+</li>
+<li>
+<p>Cost-effective Tower Pro MG996R servos (selected via Pugh matrix analysis) for joint movement.</p>
+</li>
+<li>
+<p>IMU, force sensors, and ultrasonic sensors for real-time terrain feedback</p>
+</li>
+<li>
+<p>Arduino-based PID control for balance, torque management, and adaptability</p>
+</li>
+<li>
+<p>12×Sony VTC6 Li-ion batteries (2s6p) for 1-hour runtime.</p>
+</li>
+<li>
+<p>MicroSD data logging and kinematic algorithms (MATLAB) for path planning.</p>
+</li>
+<li>
+<p>ISO 12100 (safety), ISO 18243 (batteries), and ISO 2768 (tolerances).</p>
+</li>
+</ul>
+<h2 id="engineering-process">Engineering Process</h2>
+<p>After designing the quadruped body, which can be seen below</p>
+<figure class="project-figure"><a class="image-zoom" href="../../images/quadruped%20robot/robodog_assem_2.png" aria-label="Enlarge: Quadruped Robot Design"><img src="../../images/quadruped%20robot/robodog_assem_2.png" alt="Quadruped Robot Design" loading="lazy" decoding="async"></a><figcaption>Quadruped Robot Design</figcaption></figure>
+
+<p>Light-weight and durable material was needed. So the best option out there was carbon fiber reinforced polymer (CRFP). Even the body of the quadruped robot is CFRP, it weights and loads on the servo's pins and from force, torque calculation was required and after calculations MG996R servo is selected. So, in ANSYS, static structural is used stress loads on servo pins and the result is as shown</p>
+<figure class="project-figure"><a class="image-zoom" href="../../images/quadruped%20robot/servo_pin_stress.png" aria-label="Enlarge: Servo Pin Stress Analysis"><img src="../../images/quadruped%20robot/servo_pin_stress.png" alt="Servo Pin Stress Analysis" loading="lazy" decoding="async"></a><figcaption>Servo Pin Stress Analysis</figcaption></figure>
+
+<p>In the Controller side, I used Arduino Mega as controller and several sensors such as imu for maintaining the robot's stability and ultrasonic sensor for obsticle detection etc. All arduino wiring was done as</p>
+<figure class="project-figure"><a class="image-zoom" href="../../images/quadruped%20robot/arduion_wiring2.png" aria-label="Enlarge: Arduino Wiring"><img src="../../images/quadruped%20robot/arduion_wiring2.png" alt="Arduino Wiring" loading="lazy" decoding="async"></a><figcaption>Arduino Wiring</figcaption></figure>
+
+<h2 id="results">Results</h2>
+<p>The Quadruped Robot was able to:</p>
+<ul>
+<li>
+<p>Search in abandoned places</p>
+</li>
+<li>
+<p>Map the places and save it on SD Card the is inserted</p>
+</li>
+<li>
+<p>Obsticle detection and avoiding to hit them</p>
+</li>
+<li>
+<p>Fully automation and long battery life</p>
+</li>
+</ul>
+<h2 id="project-timeline">Project timeline</h2>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Research</td>
+<td>Feb 2025</td>
+</tr>
+<tr>
+<td>Design</td>
+<td>Feb 2025 - March 2025</td>
+</tr>
+<tr>
+<td>Simulating</td>
+<td>March 2025 - April 2025</td>
+</tr>
+<tr>
+<td>Finalizing</td>
+<td>May 2025</td>
+</tr>
+<tr>
+<td>Presentation</td>
+<td>19 May 2025</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="project-gallery">Project gallery</h2>
+<figure class="project-figure"><a class="image-zoom" href="../../images/quadruped%20robot/body_assembly_page-0001.png" aria-label="Enlarge: Body Exploded View"><img src="../../images/quadruped%20robot/body_assembly_page-0001.png" alt="Body Exploded View" loading="lazy" decoding="async"></a><figcaption>Body Exploded View</figcaption></figure>
+<figure class="project-figure"><a class="image-zoom" href="../../images/quadruped%20robot/leg_assembly_page-0001.png" aria-label="Enlarge: Quadruped Robot Exploded View"><img src="../../images/quadruped%20robot/leg_assembly_page-0001.png" alt="Quadruped Robot Exploded View" loading="lazy" decoding="async"></a><figcaption>Quadruped Robot Exploded View</figcaption></figure>
+<figure class="project-figure"><a class="image-zoom" href="../../images/quadruped%20robot/leg_page-0001.png" aria-label="Enlarge: Leg Exploded View"><img src="../../images/quadruped%20robot/leg_page-0001.png" alt="Leg Exploded View" loading="lazy" decoding="async"></a><figcaption>Leg Exploded View</figcaption></figure>
+<figure class="project-figure"><a class="image-zoom" href="../../images/quadruped%20robot/fbd_leg.png" aria-label="Enlarge: Gripper System"><img src="../../images/quadruped%20robot/fbd_leg.png" alt="Gripper System" loading="lazy" decoding="async"></a><figcaption>Gripper System</figcaption></figure>
+</div><section class="tools-section"><h2>Tools & methods</h2><ul><li>SolidWorks CAD</li><li>Fusion 360</li><li>ANSYS Structural</li><li>Finite Element Analysis</li><li>Arduino</li><li>Mechatronics</li></ul></section><nav class="study-pagination" aria-label="More studies"><a href="../../case-studies/arduino-drone/index.html"><span class="eyebrow">Next study</span><strong>Arduino Drone <span aria-hidden="true">↗</span></strong></a><a class="text-link" href="../../work.html">Back to work index ↗</a></nav></div></div></article></main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="footer-profile" href="../../about.html"><strong>Burak Taş</strong><span>Mechatronics Engineer</span></a>
+      <div class="footer-links"><a href="https://www.linkedin.com/in/buraktronics/">LinkedIn ↗</a><a href="https://github.com/burkutken">GitHub ↗</a><a href="mailto:tasburak4@gmail.com">Email ↗</a></div>
+      <p class="copyright">© 2026 · Selected engineering work</p>
+    </div>
+  </footer>
+  <dialog class="lightbox" aria-label="Project image viewer"><form method="dialog"><button class="lightbox-close" aria-label="Close image viewer">Close <span aria-hidden="true">×</span></button></form><img alt=""><p></p></dialog>
+</body>
+</html>

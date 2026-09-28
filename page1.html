@@ -1,701 +1,278 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details: Magazine System Design</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #3b82f6;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            color: black;
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: black;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Project Detail Styles */
-        .project-detail {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-        
-        .project-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-        
-        .project-header h1 {
-            font-size: 2.8rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-        
-        .project-meta {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .meta-item {
-            background-color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            font-weight: 500;
-        }
-        
-        .project-content-wrapper {
-            display: flex;
-            gap: 50px;
-            margin-bottom: 60px;
-        }
-        
-        .project-details {
-            flex: 1;
-        }
-        
-        .project-details h2 {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .project-details p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .project-details ul {
-            margin-left: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .project-details li {
-            margin-bottom: 10px;
-        }
-        
-        .project-sidebar {
-            flex: 0 0 300px;
-        }
-        
-        .tech-stack {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-        
-        .tech-stack h3 {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-        
-        .tech-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .tech-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #dbeafe;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: var(--primary);
-        }
-        
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-        
-        .gallery-item {
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            /*height: 300;*/
-            position: relative;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            cursor: zoom-in;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 10px;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover .gallery-caption {
-            opacity: 1;
-        }
-        
-        .back-to-portfolio {
-            display: inline-block;
-            margin-top: 30px;
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            transition: var(--transition);
-        }
-        
-        .back-to-portfolio:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 50px 0 20px;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-        
-        .footer-about {
-            flex: 2;
-            padding-right: 50px;
-        }
-        
-        .footer-links {
-            flex: 1;
-        }
-        
-        .footer-links h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-links h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255,255,255,0.1);
-            color: white;
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .project-content-wrapper {
-                flex-direction: column;
-            }
-            
-            .project-sidebar {
-                flex: 1;
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-            
-            .nav-links.show {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 10px 0;
-            }
-            
-            .menu-btn {
-                display: block;
-            }
-            
-            .project-header h1 {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .project-detail {
-                padding: 100px 0 60px;
-            }
-            
-            .project-meta {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 40px;
-            }
-            
-            .footer-about {
-                padding-right: 0;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="generator" content="Portfolio Markdown">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magazine System — Mechanical Design, Analysis and Control — Burak Taş</title>
+  <meta name="description" content="Magazine layout, structural simulation and position control within a team graduation project.">
+  <meta name="theme-color" content="#161a1d">
+  <link rel="canonical" href="https://burkutken.github.io/portfolio/case-studies/magazine-system/index.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Magazine System — Mechanical Design, Analysis and Control — Burak Taş">
+  <meta property="og:description" content="Magazine layout, structural simulation and position control within a team graduation project.">
+  <meta property="og:url" content="https://burkutken.github.io/portfolio/case-studies/magazine-system/index.html">
+  <meta property="og:image" content="https://burkutken.github.io/portfolio/images/magazine.png">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/site.css">
+  
+  
+  <script src="assets/site.js" defer></script>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">Burak <span>Taş</span></a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#projects">Projects</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-                <div class="menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
+<body class="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="shell navigation" aria-label="Main navigation">
+      <a class="wordmark" href="index.html" aria-label="Portfolio home"><span class="mark" aria-hidden="true"></span>Work / Index</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation-links">Menu <span aria-hidden="true">+</span></button>
+      <div class="nav-links" id="navigation-links">
+        <a href="work.html" >Work</a>
+        <a href="about.html" >About</a>
+        <a href="contact.html" >Contact</a>
+        <a class="nav-cv" href="pdf/CV_burak_tas_eng.pdf">CV <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main"><article class="case-study"><header class="shell case-header"><div class="case-breadcrumb"><a href="work.html">← Work index</a><span>Mechanical / Case study 01</span></div><div class="case-hero"><div><p class="eyebrow">CAD / FEA / Control</p><h1>Magazine System</h1><p class="case-summary">My contribution to an automatic loading system design study: connecting the magazine assembly with structural analysis and control modelling.</p><dl class="case-facts"><div><dt>My contribution</dt><dd>Magazine design · Structural analysis · Control modelling</dd></div><div><dt>Status / Period</dt><dd>Completed · Spring 2025 · Graduation design study</dd></div></dl><p class="read-time">11 min read · Mechanical</p></div><div class="case-cover"><div class="cover-image"><img src="images/magazine.png" alt="CAD overview of the magazine assembly developed in the graduation design project" loading="eager" decoding="async" fetchpriority=high></div></div></div></header>
+      <div class="shell article-layout"><aside class="article-aside"><nav class="desktop-toc" aria-label="In this study"><p class="eyebrow">In this study</p><ol><li><a href="#the-project-in-context">The project in context</a></li><li><a href="#my-contribution">My contribution</a></li><li><a href="#magazine-system-design">Magazine system design</a></li><li><a href="#gripper-static-and-shock-analysis">Gripper static and shock analysis</a></li><li><a href="#magazine-component-static-and-shock-analysis">Magazine component static and shock analysis</a></li><li><a href="#control-system">Control system</a></li><li><a href="#linear-actuator-mechanism">Linear actuator mechanism</a></li><li><a href="#motor-selection">Motor selection</a></li><li><a href="#outcomes-and-reflection">Outcomes and reflection</a></li></ol></nav><details class="mobile-toc"><summary>In this study <span aria-hidden="true">+</span></summary><nav aria-label="Study sections"><ol><li><a href="#the-project-in-context">The project in context</a></li><li><a href="#my-contribution">My contribution</a></li><li><a href="#magazine-system-design">Magazine system design</a></li><li><a href="#gripper-static-and-shock-analysis">Gripper static and shock analysis</a></li><li><a href="#magazine-component-static-and-shock-analysis">Magazine component static and shock analysis</a></li><li><a href="#control-system">Control system</a></li><li><a href="#linear-actuator-mechanism">Linear actuator mechanism</a></li><li><a href="#motor-selection">Motor selection</a></li><li><a href="#outcomes-and-reflection">Outcomes and reflection</a></li></ol></nav></details></aside>
+      <div class="article-main"><div class="prose"><h2 id="the-project-in-context">The project in context</h2>
+<p>This four-person graduation project at Işık University explored an automatic loading system for 120 mm tank ammunition. The team developed a magazine, gripper mechanisms and a supporting platform, bringing mechanical design and control into one assembly.</p>
+<p>My work focused on the magazine layout, static and transient structural analysis, and the magazine's position-control model. I also contributed to actuator integration and motor selection with other team members.</p>
+<blockquote>
+<p><strong>A completed design and simulation study.</strong> The portfolio evidence is CAD, ANSYS output and MATLAB/Simulink modelling. These are the documented project outputs; physical qualification and field operation are not established by the material presented here.</p>
+</blockquote>
+<p>The brief included capacity, packaging, operating-time, inclination, mass and budget constraints. These gave the team a common design framework and connected the magazine layout to the gripper geometry, structural analysis and positioning approach.</p>
+<h2 id="my-contribution">My contribution</h2>
+<p>The work plan separates individually assigned responsibilities from shared tasks:</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Workstream</th>
+<th>My responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#magazine-system-design">Magazine system design</a></td>
+<td>Main responsibility for the magazine assembly and layout</td>
+</tr>
+<tr>
+<td><a href="#gripper-static-and-shock-analysis">Gripper static and shock analysis</a></td>
+<td>Main responsibility for the ANSYS structural studies</td>
+</tr>
+<tr>
+<td><a href="#magazine-component-static-and-shock-analysis">Magazine component static and shock analysis</a></td>
+<td>Main responsibility for the component-level structural studies</td>
+</tr>
+<tr>
+<td><a href="#control-system">Control system</a></td>
+<td>Main responsibility for the MATLAB/Simulink control model</td>
+</tr>
+<tr>
+<td><a href="#linear-actuator-mechanism">Linear actuator mechanism</a></td>
+<td>Shared with Adam Abdelnaby</td>
+</tr>
+<tr>
+<td><a href="#motor-selection">Motor selection</a></td>
+<td>Shared with Selen Ceyran</td>
+</tr>
+</tbody>
+</table></div>
+<p>Research, manual calculations, cost analysis and final documentation were shared across the team. The gripper's original mechanical design, locking mechanism, general material selection and platform design had separate owners; I worked with those outputs as part of the integrated project.</p>
+<p>My involvement developed from the early structural studies into magazine design, actuator placement and then control-system modelling, as documented in the project's meeting records.</p>
+<h2 id="magazine-system-design">Magazine system design</h2>
+<p>My main design responsibility was the magazine assembly: arranging the team's grippers within the available space and bringing the supporting, guiding and driving components together in CAD. The thesis describes a 22-position magazine, so the assembly had to accommodate repeated gripper units as well as their connections and the actuator interface.</p>
+<h3 id="from-the-gripper-geometry-to-the-assembly">From the gripper geometry to the assembly</h3>
+<p>The starting point was the gripper envelope developed by the team. I used that geometry to establish the magazine layout and the relationship between adjacent carriers. The resulting model combined the frame, chains, attachments, track-roller carriages and guide rails.</p>
+<p>The CAD work progressed from individual connections to the complete assembly. Component views explained how a carrier connected to its support and the chain, while the overall views showed the arrangement of the repeated units. Both levels of detail appear in the thesis.</p>
+<figure class="project-figure"><a class="image-zoom" href="images/magazine_system.png" aria-label="Enlarge: Front and side CAD views of the loaded magazine assembly"><img src="images/magazine_system.png" alt="Front and side CAD views of the loaded magazine assembly" loading="lazy" decoding="async"></a><figcaption>Magazine assembly views from the design study. My responsibility covered the layout and its integration with the team&#x27;s gripper geometry.</figcaption></figure>
 
-    <!-- Project Detail -->
-    <section class="project-detail">
-        <div class="container">
-            <div class="project-header">
-                <h1>Magazine System Design</h1>
-                <p>Design of an Automatic Loading System for 120 mm Tank Ammunition</p>
-                <br>
-                <div class="project-meta">
-                    <div class="meta-item">Control System Design</div>
-                    <div class="meta-item">Static Analysis</div>
-                    <div class="meta-item">Shock Analysis</div>
-                    <div class="meta-item">CAD Design</div>
-                    <div class="meta-item">Completed: June 2025</div>
-                </div>
-            </div>
-            
-            <div class="project-content-wrapper">
-                <div class="project-details">
-                    <h2>Project Overview</h2>
-                    <p>This is a graduation design project focuses on the development of an Automatic Loading System for 120 mm Tank Ammunition. 
-                        The system is designed to operate under military conditions, with the capability to function on 30° incline platform,
-                        load ammunition within 6 seconds, and maintain a total system mass under 500kg. The system integrates a 22-round magazine,
-                        actuator-driven gripper units, and a modular platform to carry the magazine system. The goal was increase to operational efficiency, 
-                        reduce human error, and ensure safety and reliability in defense scenarios, all within a strict budget of $30,000.
-                    </p>
-                    
-                    <h2>Challenge</h2>
-                    <p>In this project i was responsible with:</p>
-                    <ul>
-                        <li>Gripper Static and Shock Analysis using ANSYS</li>
-                        <li>Magazine System Design</li>
-                        <li>Magazine System Components Static and Shock Analysis using ANSYS</li>
-                        <li>Magazine Control System Design</li>
-                    </ul>
-                    <p>Here, challenges were:</p>
-                    <ul>
-                        <li>Meeting military standars (MIL-STD-810H) for shock analysis</li>
-                        <li>Designing a compact system capable of operating on slope and in tight spaces which 22 ammunitions can fit</li>
-                        <li>minimizing mechanical complexitiy and material selection</li>
-                        <li>Moving target (selected) gripper within 6 seconds to releasing position</li>
-                    </ul>
+<h3 id="connecting-the-component-interfaces">Connecting the component interfaces</h3>
+<p>The carrier arrangement linked three parts of the model: the gripper case, the guiding components and the chain attachment. The thesis documents these interfaces through assembled and exploded views. This part of the work connected the overall packaging task to the individual components later examined in ANSYS.</p>
+<figure class="project-figure"><a class="image-zoom" href="images/trackroller_vgroove_rail.png" aria-label="Enlarge: Track roller and V-groove guide rail shown in the magazine design"><img src="images/trackroller_vgroove_rail.png" alt="Track roller and V-groove guide rail shown in the magazine design" loading="lazy" decoding="async"></a><figcaption>The track-roller and guide-rail arrangement documented in the magazine design section. This component interface also formed part of the structural-analysis scope.</figcaption></figure>
 
-                    <h2>Solution</h2>
-                    <p>In the Magazine System Design:</p>
-                    <ul>
-                        <li>Chain-driven system with track rollers moving V-groove rails used. </li>
-                        <li>Aluminum 6061 is selected as a result of several pugh matrices considering weight-cost-strength.</li>
-                        <li>ANSYS strength analysis conducted respect to MIL-STD-810H standard for shock especiall.y</li>
-                        <li>BLDC Motor is calculated and selected for translation and simulated using MATLAB and Sİmulink.</li>
-                    </ul>
-                    
-                    <h2>Engineering Process</h2>
-                    <p>In the Static and Shock Analysis, most factor of safety challenging one was 
-                        the gripper shock analysis on the y axis as shown below, resulted with 4.9 FoS</p>
-                    <div class="gallery-item">
-                        <img src="images/gripper_shock.png" alt="Gripper Shock Analysis">
-                        <div class="gallery-caption">Gripper Shock Analysis</div>
-                    </div>
-                    <br>
-                    <p>In the Magazine System design, constraint was to fit 22 ammunitions into 
-                        magazine system which must be as small as possible</p>
-                    <div class="gallery-item">
-                        <img src="images/magazine_system.png" alt="Magazine System Design">
-                        <div class="gallery-caption">Magazine System Design</div>
-                    </div>
-                    <br>
-                    <p>Components like track rollers and gripper support carries gripper system and the Ammunition
-                        which is 28kg and after simulating static and shock analysis, most FoS challenging one was 
-                        gripper carrier u support as shown, resulted with 5 FoS
-                    </p>
-                    <div class="gallery-item">
-                        <img src="images/trackroller_shock.png" alt="Track Roller Shock Analysis">
-                        <div class="gallery-caption">Track Roller Shock Analysis</div>
-                    </div>
-                    <br>
-                    <p>In the magazine control system design, motor shaft position is controlled using built in encoder and system
-                        design as a close loop system. Here, additionally notes from the class MECH4480 being used since motor rotates
-                        causes translation so there is rotation-to-translation conversion. PD Controller is used to control the motor
-                        shaft position and to select the proper PD gains, damping ratio iterated and 0.8 damping ratio is selected 
-                        since it has less overshoot and faster transient.</p>
-                    <div class="gallery-item">
-                        <img src="images/controller_iteration.png" alt="System Response Under Different Damping Ratios">
-                        <div class="gallery-caption">System Response Under Different Damping Ratios</div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="images/controller_iteration_dp08.png" alt="System Response Under 0.8 Damping Ratio">
-                        <div class="gallery-caption">System Response Under 0.8 Damping Ratio</div>
-                    </div>
-                    
-                    <h2>Results</h2>
-                    <p>The MWTS has been successfully implemented in three pilot locations:</p>
-                    <ul>
-                        <li>System met all functional requirements with a load time 6 seconds</li>
-                        <li>Factor of Safety (FoS) > 4.9 in worst-case shock; all components passed fatigue and vibration analysis.</li>
-                        <li>Full compliance with MIL-STD-810H for environmental and operational conditions.</li>
-                        <li>System is modular and compact, suitable for retrofitting into different armored vehicles.</li>
-                    </ul>
-                    
-                    <a href="index.html#projects" class="back-to-portfolio">
-                        <i class="fas fa-arrow-left"></i> Back to Portfolio
-                    </a>
-                </div>
-                
-                <div class="project-sidebar"> 
-                    <div class="tech-stack">
-                        <h3>Technologies Used</h3>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-cube"></i></div>
-                            <div>SolidWorks CAD</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-cube"></i></div>
-                            <div>Fusion 360</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-wrench"></i></div>
-                            <div>ANSYS Structural/Transient</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-cogs"></i></div>
-                            <div>Finite Element Analysis</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-microchip"></i></div>
-                            <div>Matlab/Simulink</div>
-                        </div>
-                    </div>
-                    
-                    <div class="tech-stack">
-                        <h3>Project Timeline</h3>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-calendar"></i></div>
-                            <div>
-                                <h4>Research</h4>
-                                <p>Feb 2025 - March 2025</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-cogs"></i></div>
-                            <div>
-                                <h4>Design</h4>
-                                <p>March 2025 - June 2025</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-flask"></i></div>
-                            <div>
-                                <h4>Simulating</h4>
-                                <p>March 2025 - June 2025</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-rocket"></i></div>
-                            <div>
-                                <h4>Finalizing</h4>
-                                <p>May 2025 - June 2025</p>
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-icon"><i class="fas fa-person-chalkboard"></i></div>
-                            <div>
-                                <h4>Presentation</h4>
-                                <p>23 June 2025</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <h2 class="project-header">Project Gallery</h2>
-            <div class="project-gallery">
-                <div class="gallery-item">
-                    <img src="images/magazine.png" alt="Magazine System Design">
-                    <div class="gallery-caption">Magazine System Design</div>
-                </div>
+<p>I also worked on the actuator's placement within the magazine, in collaboration with the actuator workstream. The completed CAD assembly provided the geometric reference used across the project's design, analysis and documentation.</p>
+<h2 id="gripper-static-and-shock-analysis">Gripper static and shock analysis</h2>
+<p>I was responsible for the gripper's static and transient structural studies in ANSYS. The gripper geometry came from the team's design work; my contribution was to examine its response under the loading cases documented in Section 6.5.</p>
+<h3 id="comparing-the-reported-load-cases">Comparing the reported load cases</h3>
+<p>The study considered different gripper orientations within the magazine and presented the associated supports and loading directions. Static cases were followed by shock cases in different directions. The results were organised by case, making it possible to distinguish the effect of the loading arrangement within the reported model.</p>
+<p>Each analysis included equivalent von Mises stress, total deformation and a yield-based factor of safety. The following examples come directly from Table 12:</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Gripper case</th>
+<th>Maximum equivalent stress</th>
+<th>Reported factor of safety</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Static — case 1</td>
+<td>2.893 MPa</td>
+<td>&gt;15</td>
+</tr>
+<tr>
+<td>Static — case 2</td>
+<td>29.113 MPa</td>
+<td>8.9</td>
+</tr>
+<tr>
+<td>Shock — case 4</td>
+<td>52.724 MPa</td>
+<td>4.916</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are selected simulation outputs. A reported “&gt;15” is retained as the table presents it, rather than converted into an exact safety-factor value.</p>
+<figure class="project-figure"><a class="image-zoom" href="images/gripper_shock.png" aria-label="Enlarge: ANSYS gripper results showing equivalent stress, total deformation and factor of safety"><img src="images/gripper_shock.png" alt="ANSYS gripper results showing equivalent stress, total deformation and factor of safety" loading="lazy" decoding="async"></a><figcaption>Selected gripper shock simulation from Table 12, case 4. The three panels show stress, deformation and factor of safety for the same analysed case.</figcaption></figure>
 
-                <div class="gallery-item">
-                    <img src="images/roller_stress.png" alt="Equivalent Stress on Rollers">
-                    <div class="gallery-caption">Stress on Rollers</div>
-                </div>
+<h3 id="reading-the-result-as-a-component-response">Reading the result as a component response</h3>
+<p>The thesis identifies the Y-direction shock cases as important in the gripper comparison. In the selected figure, the stress contour shows the distribution within the model, while the deformation and safety-factor panels provide the accompanying response measures.</p>
+<p>My output was the set of structural simulations and their documented comparisons. The selected value of 4.916 belongs to case 4; it is not presented as the lowest value for every case or for the complete system. The thesis references MIL-STD-810H for its shock-analysis work, while the evidence shown here remains simulation evidence.</p>
+<h2 id="magazine-component-static-and-shock-analysis">Magazine component static and shock analysis</h2>
+<p>The magazine analysis extended beyond the gripper to its supporting components. My assigned work covered the static and shock studies for magazine parts, with Section 7.2 documenting the track roller and the bolts associated with the U-support.</p>
+<h3 id="track-roller-and-support-connections">Track roller and support connections</h3>
+<p>The thesis presents a separate track-roller model, its boundary conditions and the response under static and directional shock cases. It then examines the support connections separately. This separation is important because the component, material and loading arrangement differ between the models.</p>
+<p>The reported results were brought together in Table 14. The selected rows below retain the original component names and case numbers:</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Component and case</th>
+<th>Maximum equivalent stress</th>
+<th>Reported factor of safety</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Track roller — static, case 1</td>
+<td>2.69 MPa</td>
+<td>&gt;15</td>
+</tr>
+<tr>
+<td>Track roller — shock, case 2</td>
+<td>51.341 MPa</td>
+<td>5.048</td>
+</tr>
+<tr>
+<td>U-support bolts — static, case 5</td>
+<td>87.93 MPa</td>
+<td>7.41</td>
+</tr>
+<tr>
+<td>U-support bolts — static, case 6</td>
+<td>99.02 MPa</td>
+<td>6.58</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="project-figure"><a class="image-zoom" href="images/trackroller_shock.png" aria-label="Enlarge: ANSYS track-roller simulation showing equivalent stress, deformation and factor of safety"><img src="images/trackroller_shock.png" alt="ANSYS track-roller simulation showing equivalent stress, deformation and factor of safety" loading="lazy" decoding="async"></a><figcaption>Track-roller shock analysis, Table 14, case 2. This is the roller result; the U-support bolt cases are reported separately in the table.</figcaption></figure>
 
-                <div class="gallery-item">
-                    <img src="images/trackroller_vgroove_rail.png" alt="Track Roller sit on V Groove Rails">
-                    <div class="gallery-caption">Track Roller sit on V Groove Rails</div>
-                </div>
+<h3 id="documenting-the-analysis-scope">Documenting the analysis scope</h3>
+<p>This work produced component-level evidence alongside the assembly model. The CAD views explained where a part belonged, and the ANSYS figures showed the response of the particular model being evaluated.</p>
+<p>The distinction also matters when summarising the project: the roller's reported factor of safety cannot be used as the result for the entire support assembly. My contribution was to carry out and document these separate studies within the magazine workstream.</p>
+<h2 id="control-system">Control system</h2>
+<p>I developed the magazine's position-control model in MATLAB and Simulink. This work connected the mechanical arrangement to a simulated motor-position response, using the modelling approach documented in Section 9.</p>
+<h3 id="from-a-selected-position-to-a-model-reference">From a selected position to a model reference</h3>
+<p>The thesis describes an input identifying a target gripper, followed by a conversion into travel and angular-reference values. I represented this reference-generation logic in MATLAB and incorporated it into the Simulink model.</p>
+<p>The next part of the work was the rotation-to-translation model. The analysis brought together the motor parameters, load contribution, equivalent inertia, estimated friction and the mechanical conversion. Motor selection was a shared task; developing the control model was my individual work-plan responsibility.</p>
+<h3 id="comparing-the-pd-responses">Comparing the PD responses</h3>
+<p>The model used closed-loop position feedback with a proportional-derivative controller. MATLAB was used to compare the responses for the damping ratios examined in the thesis, and the results were plotted against the reference position.</p>
+<figure class="project-figure"><a class="image-zoom" href="images/controller_iteration.png" aria-label="Enlarge: MATLAB plot comparing the PD position responses for the damping ratios studied in the thesis"><img src="images/controller_iteration.png" alt="MATLAB plot comparing the PD position responses for the damping ratios studied in the thesis" loading="lazy" decoding="async"></a><figcaption>The PD-response comparison reported in the thesis. Each curve is a simulated case; the dashed line marks the reference position.</figcaption></figure>
 
-                <div class="gallery-item">
-                    <img src="images/gripper_system.png" alt="Gripper System">
-                <div class="gallery-caption">Gripper System</div>
-                </div>
+<p>The reported comparison covered damping ratios from <strong>0.6 to 0.8</strong>. The thesis selected the <strong>0.8</strong> response, describing lower overshoot than the other plotted cases. My work included producing this comparison and documenting the chosen response within the model.</p>
+<details>
+<summary>View the selected response</summary>
+<figure class="project-figure"><a class="image-zoom" href="images/controller_iteration_dp08.png" aria-label="Enlarge: MATLAB position-response plot for the damping ratio selected in the thesis"><img src="images/controller_iteration_dp08.png" alt="MATLAB position-response plot for the damping ratio selected in the thesis" loading="lazy" decoding="async"></a><figcaption>The separately plotted response for the selected damping ratio. This is an output of the thesis model, not a measurement from a physical drive.</figcaption></figure>
+</details>
+<h3 id="expressing-the-model-in-simulink">Expressing the model in Simulink</h3>
+<p>Simulink brought the reference, controller and plant representation into a connected block model. The thesis includes the overall diagram and the reference-generation subsystem, alongside the MATLAB code used for the calculation and response plots.</p>
+<figure class="project-figure"><a class="image-zoom" href="images/simulink_blockdiagram.png" aria-label="Enlarge: Simulink block diagram of the magazine position-control model"><img src="images/simulink_blockdiagram.png" alt="Simulink block diagram of the magazine position-control model" loading="lazy" decoding="async"></a><figcaption>The Simulink implementation documented in Figure 104. It connects the reference-generation and control-modelling work within the graduation study.</figcaption></figure>
 
-                <div class="gallery-item">
-                    <img src="images/chain_attachment.png" alt="Chain Attachment">
-                <div class="gallery-caption">Chain Attachment</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/sprockets.png" alt="Sprockets">
-                <div class="gallery-caption">Sprockets</div>
-                </div>
+<p>The control deliverables were the reference logic, mathematical model, response comparison and Simulink implementation. The project's timing requirement guided this work, but the simulated response is not a measured operating cycle for a complete physical system.</p>
+<h2 id="linear-actuator-mechanism">Linear actuator mechanism</h2>
+<p>This was a <strong>shared responsibility with Adam Abdelnaby</strong>. My contribution included the actuator's placement within the magazine and its integration with the assembly, as recorded in the work plan and the meeting notes.</p>
+<h3 id="selection-criteria-and-assembly-integration">Selection criteria and assembly integration</h3>
+<p>The actuator section of the thesis considered load capacity, stroke, force output, positional accuracy, structural robustness and compatibility with the surrounding system. These criteria were recorded in a comparison matrix as part of the shared workstream.</p>
+<p>The integration study then placed the actuator within the magazine frame and documented its relationship with the team's locking mechanism. The thesis includes mounting and assembly views, as well as discussion of stroke clearance, interference and mounting conditions.</p>
+<figure class="project-figure"><a class="image-zoom" href="images/magazine/actuator-integration.jpeg" aria-label="Enlarge: CAD view of the actuator installed within the magazine frame"><img src="images/magazine/actuator-integration.jpeg" alt="CAD view of the actuator installed within the magazine frame" loading="lazy" decoding="async"></a><figcaption>Actuator integration view extracted from thesis Figure 32. My contribution included actuator placement within the magazine; the mechanism workstream was shared with Adam Abdelnaby.</figcaption></figure>
 
-                <div class="gallery-item">
-                    <img src="images/simulink_blockdiagram.png" alt="Simulink Block Diagram">
-                <div class="gallery-caption">Simulink Block Diagram</div>
-                </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>Links</h3>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/buraktronics/"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/burkutken"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Burak Taş. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('show');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    document.querySelector('.nav-links').classList.remove('show');
-                }
-            });
-        });
-    </script>
+<h3 id="my-part-in-the-shared-task">My part in the shared task</h3>
+<p>The meeting notes identify actuator placement and magazine finalisation among my tasks. This links my contribution directly to the assembly work, while the broader actuator mechanism remained a joint responsibility.</p>
+<p>The resulting output was a documented integration within the CAD assembly. It also provided an interface between the magazine design and the separately developed gripper-locking mechanism.</p>
+<h2 id="motor-selection">Motor selection</h2>
+<p>Motor selection was a <strong>shared responsibility with Selen Ceyran</strong>. The meeting records document my involvement in main-motor selection and calculations, followed by the development of the control model.</p>
+<h3 id="connecting-mechanical-requirements-to-the-motor-study">Connecting mechanical requirements to the motor study</h3>
+<p>Section 9.1 sets out the main-drive calculations using the chain-pull result from the wider team analysis. It then considers the motion requirement, transmission geometry and efficiency in documenting torque, speed and power requirements.</p>
+<p>The calculation categories in the thesis can be summarised as follows:</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Part of the study</th>
+<th>Documented purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pulling-force input</td>
+<td>Carry the mechanical-load calculation into the drive study</td>
+</tr>
+<tr>
+<td>Torque calculation</td>
+<td>Describe the drive demand associated with the mechanical load</td>
+</tr>
+<tr>
+<td>Motion and speed calculation</td>
+<td>Relate the travel requirement to rotational motion</td>
+</tr>
+<tr>
+<td>Power calculation</td>
+<td>Combine the torque and speed requirements</td>
+</tr>
+<tr>
+<td>Motor parameters</td>
+<td>Supply the parameters used in the subsequent control model</td>
+</tr>
+</tbody>
+</table></div>
+<p>These calculations formed part of the shared motor-selection work. The thesis records a selected main motor and uses its parameters in the modelling that follows.</p>
+<h3 id="carrying-the-selection-into-control-modelling">Carrying the selection into control modelling</h3>
+<p>The connection to my individual work was the use of the selected motor's parameters in the rotation-to-translation model. Rotor inertia, torque constant and the other documented model quantities became inputs to the MATLAB/Simulink study.</p>
+<p>This kept the motor-selection task connected to both the mechanical work and the control section. My contribution included the shared selection and calculation stage, followed by responsibility for developing and presenting the simulated position response.</p>
+<h2 id="outcomes-and-reflection">Outcomes and reflection</h2>
+<p>My contribution connected three parts of the design study: a magazine assembly model, structural evidence for selected components, and a simulated position-control response. The thesis and meeting records document both the individual work and the interfaces with other team members.</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Evidence presented</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magazine design</td>
+<td>CAD assembly and integration views</td>
+</tr>
+<tr>
+<td>Structural analysis</td>
+<td>ANSYS figures and selected thesis table results</td>
+</tr>
+<tr>
+<td>Control modelling</td>
+<td>MATLAB response comparison and Simulink model</td>
+</tr>
+</tbody>
+</table></div>
+<p>The project gave me experience working across mechanical design, simulation and control within a shared engineering brief. It also required clear communication: an assembly view explains the geometry, an analysis case explains a component response, and a control plot explains behaviour within a model.</p>
+<p>The completed deliverable was a graduation design package. Its strongest evidence of my contribution is the connection between the assembly I developed, the component analyses I carried out and the control model I documented.</p>
+<p><em>Source: “Design of an Automatic Loading System for 120 mm Tank Ammunition,” MECH/MECT4902 graduation thesis, Işık University, Spring 2025. Contribution attribution follows Section 4, Work Plan, supported by the appendix meeting records. Selected technical material comes from Sections 6.5–6.9, 7.1–7.3 and 9. Supervised by Erkin Dinçmen.</em></p>
+</div><section class="tools-section"><h2>Tools & methods</h2><ul><li>SolidWorks</li><li>ANSYS Static Structural</li><li>ANSYS Transient Structural</li><li>MATLAB</li><li>Simulink</li><li>Mechatronics</li></ul></section><nav class="study-pagination" aria-label="More studies"><a href="case-studies/gyroid-structures/index.html"><span class="eyebrow">Next study</span><strong>Gyroid Structures <span aria-hidden="true">↗</span></strong></a><a class="text-link" href="work.html">Back to work index ↗</a></nav></div></div></article></main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="footer-profile" href="about.html"><strong>Burak Taş</strong><span>Mechatronics Engineer</span></a>
+      <div class="footer-links"><a href="https://www.linkedin.com/in/buraktronics/">LinkedIn ↗</a><a href="https://github.com/burkutken">GitHub ↗</a><a href="mailto:tasburak4@gmail.com">Email ↗</a></div>
+      <p class="copyright">© 2026 · Selected engineering work</p>
+    </div>
+  </footer>
+  <dialog class="lightbox" aria-label="Project image viewer"><form method="dialog"><button class="lightbox-close" aria-label="Close image viewer">Close <span aria-hidden="true">×</span></button></form><img alt=""><p></p></dialog>
 </body>
 </html>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Portfolio Markdown">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gyroid Structures — From Geometry to Compression Testing — Burak Taş</title>
+  <meta name="description" content="From parametric lattices to compression tests: exploring how geometry shapes mechanical response.">
+  <meta name="theme-color" content="#161a1d">
+  <link rel="canonical" href="https://burkutken.github.io/portfolio/case-studies/gyroid-structures/index.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Gyroid Structures — From Geometry to Compression Testing — Burak Taş">
+  <meta property="og:description" content="From parametric lattices to compression tests: exploring how geometry shapes mechanical response.">
+  <meta property="og:url" content="https://burkutken.github.io/portfolio/case-studies/gyroid-structures/index.html">
+  <meta property="og:image" content="https://burkutken.github.io/portfolio/images/magazine.png">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../assets/site.css">
+  
+  <link rel="stylesheet" href="../../assets/vendor/katex/katex.min.css"><script defer src="../../assets/vendor/katex/katex.min.js"></script><script defer src="../../assets/math.js"></script>
+  <script src="../../assets/site.js" defer></script>
+</head>
+<body class="case">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="shell navigation" aria-label="Main navigation">
+      <a class="wordmark" href="../../index.html" aria-label="Portfolio home"><span class="mark" aria-hidden="true"></span>Work / Index</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation-links">Menu <span aria-hidden="true">+</span></button>
+      <div class="nav-links" id="navigation-links">
+        <a href="../../work.html" >Work</a>
+        <a href="../../about.html" >About</a>
+        <a href="../../contact.html" >Contact</a>
+        <a class="nav-cv" href="../../pdf/CV_burak_tas_eng.pdf">CV <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a>
+      </div>
+    </nav>
+  </header>
+  <main id="main"><article class="case-study"><header class="shell case-header"><div class="case-breadcrumb"><a href="../../work.html">← Work index</a><span>Manufacturing / Case study 02</span></div><div class="case-hero"><div><p class="eyebrow">Parametric design / Testing / Regression</p><h1>Gyroid Structures</h1><p class="case-summary">Designing, printing and testing resin lattices, then using experimental data to examine what their geometry can—and cannot—predict.</p><dl class="case-facts"><div><dt>My contribution</dt><dd>Project lead · Design, testing &amp; analysis</dd></div><div><dt>Status / Period</dt><dd>Completed · 2025 · Final report: January 2026</dd></div></dl><p class="read-time">7 min read · Manufacturing</p></div><div class="case-cover"><div class="cover-image"><img src="../../images/gyroid/printed-series.jpeg" alt="Three printed gyroid specimens with different lattice depths and solid end pads" loading="eager" decoding="async" fetchpriority=high></div></div></div></header>
+      <div class="shell article-layout"><aside class="article-aside"><nav class="desktop-toc" aria-label="In this study"><p class="eyebrow">In this study</p><ol><li><a href="#the-question">The question</a></li><li><a href="#designing-a-comparable-series">Designing a comparable series</a></li><li><a href="#making-and-testing-the-specimens">Making and testing the specimens</a></li><li><a href="#turning-test-data-into-evidence">Turning test data into evidence</a></li><li><a href="#what-the-results-show">What the results show</a></li><li><a href="#how-far-could-prediction-go">How far could prediction go?</a></li><li><a href="#what-i-would-carry-forward">What I would carry forward</a></li></ol></nav><details class="mobile-toc"><summary>In this study <span aria-hidden="true">+</span></summary><nav aria-label="Study sections"><ol><li><a href="#the-question">The question</a></li><li><a href="#designing-a-comparable-series">Designing a comparable series</a></li><li><a href="#making-and-testing-the-specimens">Making and testing the specimens</a></li><li><a href="#turning-test-data-into-evidence">Turning test data into evidence</a></li><li><a href="#what-the-results-show">What the results show</a></li><li><a href="#how-far-could-prediction-go">How far could prediction go?</a></li><li><a href="#what-i-would-carry-forward">What I would carry forward</a></li></ol></nav></details></aside>
+      <div class="article-main"><div class="prose"><h2 id="the-question">The question</h2>
+<p>How does the geometry of a printed lattice change the way it carries load and fails? This TÜBİTAK 2209-A research project explored that question using gyroid structures: repeating, curved surfaces that form a continuous cellular geometry.</p>
+<p>I led the project, connecting parametric design, resin printing and compression testing with data analysis. The study was supervised by Ali Taner Kuzu. The goal was to compare geometric choices through physical evidence and investigate whether a small experimental dataset could support design predictions.</p>
+<blockquote>
+<p><strong>27 design combinations. 25 specimens in the analysis.</strong> The outcome was a complete design-to-test workflow—and a clear limit: the regression models supported exploration, but were not accurate enough to establish a validated optimum.</p>
+</blockquote>
+<h2 id="designing-a-comparable-series">Designing a comparable series</h2>
+<p>The nTop models varied three parameters while keeping the lattice orientation consistent. Each specimen was identified by cell size, wall thickness and level; for example, <strong>8mm-1.5-3</strong> means an 8 mm cell, a 1.5 mm wall and three repeated cells through the specimen depth.</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Design variable</th>
+<th>Values explored</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cell size</td>
+<td>6, 8 and 10 mm</td>
+</tr>
+<tr>
+<td>Wall thickness</td>
+<td>0.5, 1.0 and 1.5 mm</td>
+</tr>
+<tr>
+<td>Level / repeats through depth</td>
+<td>2, 3 and 4</td>
+</tr>
+<tr>
+<td>Design combinations</td>
+<td>3 × 3 × 3 = 27</td>
+</tr>
+</tbody>
+</table></div>
+<p>The lattice height and width were 48 mm for the 6 and 8 mm cells, and 50 mm for the 10 mm cells to accommodate whole cells. Depth was cell size multiplied by level. Solid 5 mm pads at the top and bottom provided contact surfaces for compression.</p>
+<figure class="project-figure"><a class="image-zoom" href="../../images/gyroid/specimen-dimensions.png" aria-label="Enlarge: Gyroid specimen drawing showing the 48 mm lattice height, 5 mm end pad and variable depth"><img src="../../images/gyroid/specimen-dimensions.png" alt="Gyroid specimen drawing showing the 48 mm lattice height, 5 mm end pad and variable depth" loading="lazy" decoding="async"></a><figcaption>Specimen geometry from the project report. The variable depth, n, equals cell size × level; the 10 mm cell series uses a 50 mm lattice height.</figcaption></figure>
+
+<p>Cross-sectional area also changed between designs. I recorded the minimum section area from the CAD geometry for the stress calculations. This choice matters when interpreting the results: the reported stress is normalised by the minimum solid section, rather than the full external footprint.</p>
+<h2 id="making-and-testing-the-specimens">Making and testing the specimens</h2>
+<p>The specimens were produced on an Anycubic Photon Mono M7 resin printer using Water-Wash Resin+. After printing, they were washed, supports were removed and each specimen received four minutes of UV post-curing.</p>
+<p>Compression tests used a Testometric universal testing machine at <strong>3 mm/min</strong>. Specimens were centred between the platens, and video recorded the development of cracks alongside the force, displacement and time data.</p>
+<figure class="project-figure"><a class="image-zoom" href="../../images/gyroid/test-setup.jpeg" aria-label="Enlarge: Camera recording a gyroid specimen between the platens of a Testometric compression testing machine"><img src="../../images/gyroid/test-setup.jpeg" alt="Camera recording a gyroid specimen between the platens of a Testometric compression testing machine" loading="lazy" decoding="async"></a><figcaption>The test setup paired force–displacement measurements with video, making it possible to relate load drops to visible cracking.</figcaption></figure>
+
+<p>The report describes brittle collapse and several splitting patterns, including diagonal and V-shaped cracks. Some tests ended early when the machine detected a sudden load drop. Those shorter records are important when comparing energy absorption at a fixed strain.</p>
+<details>
+<summary>Watch a compression test from the project</summary>
+<figure class="project-figure"><video controls preload="metadata" playsinline aria-label="Recorded compression test — observe how the lattice fractures under load."><source src="../../images/gyroid/gyroid_compression_edited.mp4"><a href="../../images/gyroid/gyroid_compression_edited.mp4">Recorded compression test — observe how the lattice fractures under load.</a></video><figcaption>Recorded compression test — observe how the lattice fractures under load.</figcaption></figure></details>
+<h2 id="turning-test-data-into-evidence">Turning test data into evidence</h2>
+<p>MATLAB processing converted the machine exports into stress–strain curves. Three quantities connected the raw measurements to the engineering questions: peak stress, the initial slope of the curve, and the area under it.</p>
+<div class="math math-display" data-display="true">\sigma = \frac{F}{A_{\min}}, \qquad \varepsilon = \frac{\Delta L}{L_0}</div>
+<p>Here, <span class="math">F</span> is force in N, <span class="math">A_{\min}</span> is the minimum CAD section in mm², and <span class="math">\Delta L</span> is the measured displacement in mm. The analysis used a reference lattice height <span class="math">L_0</span> of 48 or 50 mm. Stress is therefore in N/mm², equivalent to MPa, and strain is dimensionless.</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Calculation</th>
+<th>What it reveals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Peak stress</td>
+<td>Maximum of the stress record</td>
+<td>Highest section-normalised stress reached</td>
+</tr>
+<tr>
+<td>Initial stiffness estimate</td>
+<td>Linear fit over the initial 0–2% strain interval</td>
+<td>Initial resistance to deformation</td>
+</tr>
+<tr>
+<td>Integrated stress–strain response</td>
+<td>Trapezoidal integration to a specified strain</td>
+<td>Load sustained through deformation</td>
+</tr>
+</tbody>
+</table></div>
+<div class="math math-display" data-display="true">W(\varepsilon^*) = \int_0^{\varepsilon^*} \sigma(\varepsilon)\,d\varepsilon</div>
+<p>With stress in MPa, this integral has units of MJ/m³. Its normalisation follows the chosen section area and reference length; it should not be read as energy per total specimen volume without conversion. Similarly, the initial slope is a specimen-level stiffness estimate, not an independently measured resin modulus.</p>
+<figure class="project-figure"><a class="image-zoom" href="../../images/gyroid/stress-strain.png" aria-label="Enlarge: Combined experimental stress–strain curves showing peaks followed by sudden load drops and different residual responses"><img src="../../images/gyroid/stress-strain.png" alt="Combined experimental stress–strain curves showing peaks followed by sudden load drops and different residual responses" loading="lazy" decoding="async"></a><figcaption>Original MATLAB output, report Figure 20. The different curve shapes and abrupt post-peak drops show why one peak value cannot describe the full response. Open the figure to inspect individual curves.</figcaption></figure>
+
+<p><strong>A shared endpoint is essential.</strong> A test that stops before 30% strain does not provide a measured value at 30%. Such records need to remain unavailable for that comparison, or be compared over a shorter interval reached by every included specimen.</p>
+<h2 id="what-the-results-show">What the results show</h2>
+<p>One useful comparison holds cell size and level constant. For the <strong>8 mm cell / level 3</strong> series, the report gives:</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Wall thickness</th>
+<th>Minimum section area</th>
+<th>Reported peak stress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5 mm</td>
+<td>94.78 mm²</td>
+<td>1.96 MPa</td>
+</tr>
+<tr>
+<td>1.0 mm</td>
+<td>233.66 mm²</td>
+<td>3.54 MPa</td>
+</tr>
+<tr>
+<td>1.5 mm</td>
+<td>359.20 mm²</td>
+<td>4.84 MPa</td>
+</tr>
+</tbody>
+</table></div>
+<p>Within this series, thicker walls corresponded to higher peak stress, even after section normalisation. Across the full dataset, however, the response was more scattered. A trend in one series is not enough to establish a universal design rule.</p>
+<p>The report also applied a three-factor ANOVA to peak stress. Cell size had a reported p-value of <strong>0.036</strong>, while the main effects of thickness and level were not significant at the 0.05 threshold in that analysis. This is an exploratory result from the available specimens, not evidence that the other parameters have no physical effect.</p>
+<h2 id="how-far-could-prediction-go">How far could prediction go?</h2>
+<p>Python regression models used cell size, wall thickness and level to predict peak stress. With only 25 specimens, the study used leave-one-out cross-validation: each specimen was held out once while the model fitted the other 24. This provides an out-of-sample comparison within the available dataset; it does not replace testing new prints.</p>
+<div class="table-scroll" role="region" aria-label="Data table" tabindex="0"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>LOOCV R²</th>
+<th>RMSE (MPa)</th>
+<th>MAE (MPa)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ridge regression</td>
+<td>0.334</td>
+<td>1.466</td>
+<td>0.977</td>
+</tr>
+<tr>
+<td>Linear regression</td>
+<td>0.325</td>
+<td>1.475</td>
+<td>0.977</td>
+</tr>
+<tr>
+<td>Degree-2 polynomial + Ridge</td>
+<td>0.302</td>
+<td>1.501</td>
+<td>0.954</td>
+</tr>
+<tr>
+<td>Random forest</td>
+<td>0.155</td>
+<td>1.651</td>
+<td>1.148</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ridge had the highest reported R² and lowest RMSE, with linear regression close behind. The polynomial model had the lowest MAE. None provided strong predictive performance: the best R² was only about 0.33.</p>
+<p>The report's parameter search proposed a <strong>6 mm cell, 1.5 mm wall and level 2</strong>, with a predicted peak stress of <strong>6.47 MPa</strong>. That is a model-generated candidate, not a newly tested result or a confirmed optimum. The report's prose and model-selection output differ on which regressor produced it, so the value is retained only as an exploratory result.</p>
+<h2 id="what-i-would-carry-forward">What I would carry forward</h2>
+<p>This project connected geometry generation, physical testing, numerical processing and model evaluation in one workflow. Its most useful lesson was to consider the complete response—and the quality of the dataset—before choosing a design from a single score.</p>
+<p>The next iteration would repeat specimens to quantify variability, record as-built dimensions and mass, and use an explicit specimen-to-area mapping in the analysis. Energy comparisons would include a check that each curve reaches the target strain. Any proposed optimum would then need a separate batch of validation prints.</p>
+<p><em>Source: my TÜBİTAK 2209-A final report, dated 1 January 2026. Values above are selected reported results, not a new analysis of the raw test files. Figures show the project's actual specimens and experimental output.</em></p>
+</div><section class="tools-section"><h2>Tools & methods</h2><ul><li>nTop</li><li>Resin 3D printing</li><li>Compression testing</li><li>MATLAB</li><li>Python</li><li>scikit-learn</li><li>ANOVA</li><li>LOOCV</li><li>Additive Manufacturing</li><li>Data Analysis</li></ul></section><nav class="study-pagination" aria-label="More studies"><a href="../../case-studies/mql-project/index.html"><span class="eyebrow">Next study</span><strong>MQL Project <span aria-hidden="true">↗</span></strong></a><a class="text-link" href="../../work.html">Back to work index ↗</a></nav></div></div></article></main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="footer-profile" href="../../about.html"><strong>Burak Taş</strong><span>Mechatronics Engineer</span></a>
+      <div class="footer-links"><a href="https://www.linkedin.com/in/buraktronics/">LinkedIn ↗</a><a href="https://github.com/burkutken">GitHub ↗</a><a href="mailto:tasburak4@gmail.com">Email ↗</a></div>
+      <p class="copyright">© 2026 · Selected engineering work</p>
+    </div>
+  </footer>
+  <dialog class="lightbox" aria-label="Project image viewer"><form method="dialog"><button class="lightbox-close" aria-label="Close image viewer">Close <span aria-hidden="true">×</span></button></form><img alt=""><p></p></dialog>
+</body>
+</html>
